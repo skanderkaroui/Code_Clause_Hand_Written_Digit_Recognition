@@ -173,3 +173,29 @@ function predictDigit(e) {
 
 clearButton.addEventListener("click", clearCanvas)
 predictButton.addEventListener("click", predictDigit)
+
+// script.js
+document.getElementById("predictButton").addEventListener("click", function() {
+  // Code for making the prediction
+
+  // Send the image data to the server for prediction
+  var canvas = document.getElementById("canvas");
+  var image = canvas.toDataURL();
+
+  axios.post("/predict-digit", { image: image })
+      .then(function(response) {
+          // Code for displaying the prediction
+          var predictionElement = document.getElementById("prediction");
+          var confidenceElement = document.getElementById("confidence");
+          predictionElement.innerText = response.data.prediction;
+          confidenceElement.innerText = response.data.confidence;
+
+          // Code for displaying the plot
+          var plotData = response.data.plot_data;
+          var imgElement = document.getElementById("probs");
+          imgElement.src = "data:image/png;base64," + plotData;
+      })
+      .catch(function(error) {
+          console.log(error);
+      });
+});

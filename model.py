@@ -60,17 +60,14 @@ def predict(image_data):
 
 import os
 
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
+#import matplotlib
+#matplotlib.use('Agg')
+#import matplotlib.pyplot as plt
 
 def plot(prediction, confidence):
     # Create a bar plot
-
-    prediction = float(prediction)
-    confidence = int(float(confidence)*100)
     fig, ax = plt.subplots()
-    ax.bar([prediction], [confidence], align='center', width=0.5)  # Adjust the width of the bar
+    ax.bar([prediction], [confidence], align='center', width=0.1)  # Adjust the width of the bar
 
     # Set the title and labels
     ax.set_title('Prediction')
@@ -84,11 +81,13 @@ def plot(prediction, confidence):
     # Add text annotation for the bar
     ax.text(prediction, confidence + 1, str(confidence), ha='center')
 
-    # Save the plot as an image
-    plot_path = 'static/plot.png'
-    plt.savefig(plot_path)
+    # Convert the plot to a base64-encoded string
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png')
+    plot_data = base64.b64encode(buffer.getvalue()).decode('utf-8')
 
-    return plot_path
+    return plot_data
+
 
 
 
