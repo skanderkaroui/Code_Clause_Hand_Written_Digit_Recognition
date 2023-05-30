@@ -6,4 +6,5 @@ This is a A Convolutional Neural Network algorithm trained on the MNIST database
 
 
 Sources: 
-This medium article has been a great source of inspiration for the project: https://medium.com/artificialis/building-a-hand-written-digit-recognition-web-app-with-tensorflow-8b51b0b95fdf
+This medium article has been a great source of inspiration for the project:
+https://medium.com/artificialis/building-a-hand-written-digit-recognition-web-app-with-tensorflow-8b51b0b95fdf
