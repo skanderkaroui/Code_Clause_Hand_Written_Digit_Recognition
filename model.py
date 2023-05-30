@@ -67,7 +67,10 @@ import os
 def plot(prediction, confidence):
     # Create a bar plot
     fig, ax = plt.subplots()
-    ax.bar([prediction], [confidence], align='center', width=0.1)  # Adjust the width of the bar
+    x_values = list(range(10))  # X-axis values from 0 to 9
+    y_values = [0] * 10  # Initialize all y-values to 0
+    y_values[int(prediction)] = confidence  # Set the confidence value at the predicted digit
+    ax.bar(x_values, y_values, align='center', width=0.5)  # Adjust the width of the bar
 
     # Set the title and labels
     ax.set_title('Prediction')
@@ -75,11 +78,12 @@ def plot(prediction, confidence):
     ax.set_ylabel('Confidence (%)')
 
     # Set the tick labels for x-axis
-    ax.set_xticks([prediction])
-    ax.set_xticklabels([prediction])
+    ax.set_xticks(x_values)
+    ax.set_xticklabels(x_values)
 
-    # Add text annotation for the bar
-    ax.text(prediction, confidence + 1, str(confidence), ha='center')
+    # Add text annotations for the bars
+    for i, v in enumerate(y_values):
+        ax.text(i, v + 1, str(v), ha='center')
 
     # Convert the plot to a base64-encoded string
     buffer = BytesIO()
