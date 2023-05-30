@@ -66,8 +66,11 @@ import matplotlib.pyplot as plt
 
 def plot(prediction, confidence):
     # Create a bar plot
+
+    prediction = float(prediction)
+    confidence = int(float(confidence)*100)
     fig, ax = plt.subplots()
-    ax.bar([prediction], [confidence], align='center', width=0.1)  # Adjust the width of the bar
+    ax.bar([prediction], [confidence], align='center', width=0.5)  # Adjust the width of the bar
 
     # Set the title and labels
     ax.set_title('Prediction')
