@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Digit Recognizer with Tensorflow </title>
+        <link rel="stylesheet" href="/static/style.css">
+
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <h1>Digit Recognizer!</h1>
+            <p>This is a machine learning algorithm that identifies digits drawn by the user using <a href="https://www.python.org/doc/">Python</a>, <a href="https://flask.palletsprojects.com/">Flask</a> and <a href="https://www.tensorflow.org/">Tensorflow</a> </p>
+            <p>Draw the digit in the pad below and click the Predict button to find if your content have been plagiarized or not</p>
+            <div class="container">
+                <div class="draw-title">Draw<br>a digit:</div>
+                <div class="canvas-div">
+                    <canvas id="canvas" width="112px" height="112px"></canvas>
+                </div>
+                <div class="buttons">
+                    <button class="button" id="predictButton">Predict</button>
+                    <button class="button" id="clearButton">Clear</button>
+                </div>
+                <div class="prediction-container">
+                    <h3 class="prediction-heading">Prediction:</h3>
+                    <div class="prediction-label">
+                        <div class="prediction" id="prediction">?</div>
+                        <div class="confidence" id="confidence"></div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="prediction-container">
+                <img id ="probs" src="/static/plot.png" alt="Prediction Plot">
+            </div>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js'></script>
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+            <script src="/static/script.js"></script>
+        </div>
+    </body>
+
+</html>
